@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  // declare initial arrays for students or teachers
+  const initialStudentArray = [{name: 'Joe', year: 'Freshman'}];
+  const initialFacultyArray = [{title: 'Professor', subject: 'Math', name: 'Robert'}];
+
+  // declare state from initial values.
+  const [students, setStudents] = useState(initialStudentArray);
+  const [faculty, setFaculty] = useState(initialFacultyArray);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      // make array mapper for faculty and students.
+      // make a form to add a student
+      // make a form to add a teacher
     </div>
   );
 }
