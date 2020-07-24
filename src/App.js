@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
+
 function App() {
-  // declare initial arrays for students or teachers
-  const initialStudentArray = [{name: 'Joe', year: 'Freshman'}];
-  const initialFacultyArray = [{title: 'Professor', subject: 'Math', name: 'Robert'}];
+  // declare initial arrays for quiz
+  const initialQuizArray = [{question: "What is our mascot?", answers:[{correct: false, text: "Sour Patch Kids"}, {correct: true, text: "Dinasours"}]}];
+
 
   // declare state from initial values.
-  const [students, setStudents] = useState(initialStudentArray);
-  const [faculty, setFaculty] = useState(initialFacultyArray);
+  const [quizArray, setQuiz] = useState(initialQuizArray)
 
   return (
     <div className="App">
-      // make array mapper for faculty and students.
-      // make a form to add a student
-      // make a form to add a teacher
+      {/* A quiz can have many questions */}
+      {/* A question can have many answers */}
     </div>
   );
 }
