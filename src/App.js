@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 
 import AttendeeList from "./components/AttendeeList";
+import Header from "./components/Header";
+import AddButton from "./components/AddButton";
 
-function App() {
+export default function App() {
   // declare initial array, and a blank question for quiz
   const initialAttendeeList = [
     {
@@ -16,14 +18,7 @@ function App() {
 
   // declare state from initial values.
   const [attendeeList, setAttendeeList] = useState(initialAttendeeList);
-
-  // helper method for adding an attendee
-  const addAttendee = () => {
-    setAttendeeList([
-      ...attendeeList,
-      { name: "", role: "", email: "", id: attendeeList.length },
-    ]);
-  };
+  const [isFormExist, setIsFormExist] = useState(false);
 
   // this method allows me to find a student by it's ID and change that entry in our array.
   const handleSubmit = e => {
@@ -38,14 +33,32 @@ function App() {
     };
     newAttendeeList[et.id.value] = formData;
     setAttendeeList(newAttendeeList);
+    setIsFormExist(false);
+  };
+  const deleteForm = id => {
+    console.log(attendeeList);
+    const hehe = attendeeList.splice(id - 1, 1);
+    setAttendeeList(attendeeList, hehe);
+    setIsFormExist(false);
   };
 
   return (
     <div className='App'>
-      <AttendeeList array={attendeeList} handleSubmit={handleSubmit} />
-      <button onClick={addAttendee}>Add a new attendee!</button>
+      <Header />
+      {!isFormExist && (
+        <AddButton
+          attendeeList={attendeeList}
+          setAttendeeList={setAttendeeList}
+          setIsFormExist={setIsFormExist}
+        />
+      )}
+
+      <AttendeeList
+        array={attendeeList}
+        handleSubmit={handleSubmit}
+        deleteForm={deleteForm}
+        isFormExist={isFormExist}
+      />
     </div>
   );
 }
-
-export default App;
