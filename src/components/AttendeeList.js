@@ -12,6 +12,8 @@ export default function AttendeeList(props) {
             key={index}
             id={attendee.id}
             handleSubmit={props.handleSubmit}
+            deleteForm={props.deleteForm}
+            isFormExist={props.isFormExist}
           />
         );
       } else {
